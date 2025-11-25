@@ -23,6 +23,7 @@
             color: white;
             padding: 20px 0;
             box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+            position: relative; /* مهم لوضع القائمة المنبثقة تحته */
         }
 
         .header-content {
@@ -77,6 +78,20 @@
         .contact-header a:hover {
             text-decoration: underline;
         }
+
+        /* ------------------------------------------- */
+        /* --- إضافة كود زر القائمة المنبثقة --- */
+        /* ------------------------------------------- */
+        .menu-toggle {
+            display: none; /* يتم إظهاره فقط في وضع الموبايل */
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+            order: 3; /* لجعله يظهر على اليسار في وضع RTL */
+        }
+        /* ------------------------------------------- */
+
 
         /* Navigation */
         nav {
@@ -563,27 +578,52 @@
             color: #999;
         }
 
-        /* Responsive */
+        /* ------------------------------------------- */
+        /* --- تعديلات الهاتف النقال (Mobile) --- */
+        /* ------------------------------------------- */
         @media (max-width: 768px) {
+            
+            /* إظهار زر القائمة (الهمبرغر) */
+            .menu-toggle {
+                display: block; 
+            }
+            
             .header-content {
-                text-align: center;
-                justify-content: center;
+                /* إزالة التفاف النص وجعله متناسقاً في سطر واحد على الأغلب */
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            
+            /* إخفاء شريط التنقل (القائمة) افتراضياً */
+            nav ul {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                background: white; 
+                position: absolute; /* ليطفو فوق المحتوى */
+                top: 140px; /* المسافة من أعلى الصفحة (تحت الهيدر) */
+                left: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                z-index: 99; /* أقل من السلة العائمة بقليل */
+            }
+
+            /* إظهار القائمة عند وجود الكلاس nav-open */
+            nav ul.nav-open {
+                display: flex; 
             }
 
             .contact-header {
-                text-align: center;
+                /* إخفاء رقم الهاتف في الهيدر لترك مساحة لزر القائمة والشعار */
+                display: none; 
             }
-
+            
+            /* التنقلات الأخرى من الكود الأصلي */
             .hero h2 {
                 font-size: 32px;
             }
 
             .hero p {
                 font-size: 16px;
-            }
-
-            nav ul {
-                flex-direction: column;
             }
 
             nav a {
@@ -616,6 +656,9 @@
                     <p>جودة عالية - أسعار منافسة</p>
                 </div>
             </div>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            
             <div class="contact-header">
                 <a href="tel:0785958999">📞 0785958999</a>
             </div>
@@ -844,7 +887,7 @@
         // رقم الهاتف الخاص بك (الأردن)
         const YOUR_PHONE_NUMBER = '962785958999'; 
         
-        // 🚀 هذا هو رابط موقعك الفعلي الذي تم تثبيته بناءً على طلبك 🚀
+        // 🚀 رابط موقعك الفعلي (المثبت) 🚀
         const IMAGE_BASE_URL = 'https://yaghiabdullahzarqa-cloud.github.io/almaddat_website/'; 
         
         // تخزين السلة في المتصفح (localStorage)
@@ -998,7 +1041,15 @@
             }
         }
         
-        // وظيفة التنقل الأصلية
+        // -------------------------------------------
+        // --- وظيفة التحكم في القائمة المنبثقة ---
+        // -------------------------------------------
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('nav-open');
+        }
+
+        // وظيفة التنقل الأصلية (تم تعديلها لإغلاق القائمة بعد النقر)
         function showSection(section) {
             // Remove active class from all nav links
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -1012,6 +1063,13 @@
             const hero = document.getElementById('home-section');
             const categories = document.getElementById('categories');
             
+            // إغلاق القائمة المنبثقة بعد اختيار قسم (في وضع الموبايل)
+            const navUl = document.querySelector('nav ul');
+            if (navUl.classList.contains('nav-open')) {
+                navUl.classList.remove('nav-open');
+            }
+
+
             if (section === 'home') {
                 hero.style.display = 'block';
                 categories.style.display = 'block';
