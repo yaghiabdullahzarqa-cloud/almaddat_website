@@ -254,6 +254,78 @@
             font-weight: bold;
         }
 
+        /* Product Card Styling for Responsiveness - تم إضافته هنا */
+        .product-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9; 
+            border-radius: 10px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(196, 30, 58, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain; 
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .product-card h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-card .description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            height: 40px; 
+            overflow: hidden;
+        }
+
+        .product-card .price {
+            font-size: 22px;
+            color: #c41e3a;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .add-to-cart-button {
+            display: block;
+            background: #c41e3a;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart-button:hover {
+            background: #8b1528;
+        }
+        
         .product-placeholder {
             background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
             border: 2px dashed #ddd;
@@ -366,7 +438,7 @@
             color: #999;
         }
 
-        /* Responsive */
+        /* Responsive - تم تحسين هذا الجزء لحل مشكلة التغطية على الموبايل */
         @media (max-width: 768px) {
             .header-content {
                 text-align: center;
@@ -376,6 +448,19 @@
             .contact-header {
                 text-align: center;
             }
+            /* تصغير حجم الهاتف والرقم */
+            .logo-section img {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .company-name h1 {
+                font-size: 20px;
+            }
+            
+            .contact-header a {
+                font-size: 18px; /* تصغير حجم رقم الهاتف */
+            }
 
             .hero h2 {
                 font-size: 32px;
@@ -384,27 +469,28 @@
             .hero p {
                 font-size: 16px;
             }
-
+            
+            /* تحسين شريط التنقل على الهاتف */
             nav ul {
                 flex-direction: column;
             }
 
             nav a {
-                padding: 15px;
+                padding: 10px 15px; /* تقليل الـ Padding هنا لحل مشكلة التغطية */
+                font-size: 14px; /* تصغير حجم الخط */
                 border-bottom: 1px solid #eee;
+            }
+
+            .categories {
+                 margin-top: 30px; /* تقليل المسافة العلوية */
             }
 
             .category-grid {
                 grid-template-columns: 1fr;
             }
-
-            .logo-section img {
-                width: 80px;
-                height: 80px;
-            }
-
-            .company-name h1 {
-                font-size: 22px;
+            
+            .content {
+                margin: 30px auto; /* تقليل الهوامش الرأسية للمحتوى */
             }
         }
     </style>
@@ -495,6 +581,7 @@
             <p class="note">هذا المكان مخصص لعرض المنتجات المخفضة لجذب الزبائن.</p>
         </div>
     </div>
+    
     <div class="content" id="hand-tools-section">
         <h2>عدد يدوية</h2>
         <div class="product-placeholder">
@@ -613,12 +700,18 @@
                 const targetSection = document.getElementById(section + '-section');
                 if (targetSection) {
                     targetSection.classList.add('active');
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // يفضل إزالة التمرير التلقائي (scrollIntoView) في حال وجود شريط تنقل ثابت (sticky nav) لتجنب القفز
+                    // targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+                    
+                    // بدلاً من ذلك، ننتقل للأعلى قليلاً
+                     window.scrollTo({
+                         top: 0,
+                         behavior: 'smooth'
+                     });
                 }
 
                 // Highlight active nav link
                 const navLinks = document.querySelectorAll('.nav-link');
-                // تحديث الـ Section Map بناءً على إضافة "العروض" في الموقع رقم 1
                 const sectionMap = {
                     'offers': 1,
                     'hand-tools': 2,
