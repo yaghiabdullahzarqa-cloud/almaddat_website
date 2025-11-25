@@ -548,508 +548,4 @@
             border-radius: 50%;
             color: white;
             font-size: 22px;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: #8b1528;
-            transform: scale(1.1);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #999;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                text-align: center;
-                justify-content: center;
-            }
-
-            .contact-header {
-                text-align: center;
-            }
-
-            .hero h2 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 15px;
-                border-bottom: 1px solid #eee;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .logo-section img {
-                width: 80px;
-                height: 80px;
-            }
-
-            .company-name h1 {
-                font-size: 22px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <img src="logo.png" alt="شعار عالم المعدات (يرجى إضافة صورة الشعار)">
-                <div class="company-name">
-                    <h1>عالم المعدات الشاملة</h1>
-                    <p>جودة عالية - أسعار منافسة</p>
-                </div>
-            </div>
-            <div class="contact-header">
-                <a href="tel:0785958999">📞 0785958999</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="cart-icon" onclick="openCartModal()">
-        🛒
-        <span class="cart-count" id="cart-count">0</span>
-    </div>
-
-    <div id="cart-modal" class="cart-modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeCartModal()">×</span>
-            <h2>سلة مشترياتك</h2>
-            <ul id="cart-list" class="cart-items">
-                </ul>
-            <div class="cart-total">
-                الإجمالي: <span id="cart-total">0.00</span> د.أ
-            </div>
-            <br>
-            <a href="#" onclick="checkoutViaWhatsApp(event)" class="buy-now-btn" style="display: block;">
-                إتمام الطلب عبر واتساب
-            </a>
-            <p id="empty-cart-message" style="text-align: center; color: #888; margin-top: 15px; display: none;">السلة فارغة حالياً.</p>
-        </div>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showSection('home')" class="nav-link">الرئيسية</a></li>
-            <li><a href="#" onclick="showSection('offers')" class="nav-link">العروض</a></li>
-            <li><a href="#" onclick="showSection('hand-tools')" class="nav-link">عدد يدوية</a></li>
-            <li><a href="#" onclick="showSection('industrial')" class="nav-link">عدد صناعية</a></li>
-            <li><a href="#" onclick="showSection('construction')" class="nav-link">عدد بناء</a></li>
-            <li><a href="#" onclick="showSection('materials')" class="nav-link">مواد بناء</a></li>
-            <li><a href="#" onclick="showSection('plumbing')" class="nav-link">قسم صحي</a></li>
-            <li><a href="#" onclick="showSection('pumps')" class="nav-link">مضخات ماء</a></li>
-            <li><a href="#" onclick="showSection('contact')" class="nav-link">اتصل بنا</a></li>
-        </ul>
-    </nav>
-
-    <div class="hero" id="home-section">
-        <div class="hero-content">
-            <h2>مرحباً بكم في عالم المعدات الشاملة</h2>
-            <p>نوفر لكم أفضل المعدات والأدوات بجودة عالية وأسعار منافسة. نخدمكم بالجملة والمفرق في جميع أنواع المعدات اليدوية والصناعية ومواد البناء.</p>
-            <a href="#categories" class="cta-button">تصفح الأقسام</a>
-        </div>
-    </div>
-
-    <div class="categories" id="categories">
-        <h2>أقسامنا</h2>
-        <div class="category-grid">
-            <div class="category-card" onclick="showSection('hand-tools')">
-                <div class="category-icon">🔧</div>
-                <h3>عدد يدوية</h3>
-                <p>جميع أنواع العدد اليدوية من مفكات، كماشات، مفاتيح ربط وغيرها</p>
-            </div>
-
-            <div class="category-card" onclick="showSection('industrial')">
-                <div class="category-icon">⚙️</div>
-                <h3>عدد صناعية</h3>
-                <p>معدات وأدوات صناعية احترافية لجميع الاستخدامات</p>
-            </div>
-
-            <div class="category-card" onclick="showSection('construction')">
-                <div class="category-icon">🔨</div>
-                <h3>عدد بناء</h3>
-                <p>كل ما تحتاجه من معدات البناء والتشييد</p>
-            </div>
-
-            <div class="category-card" onclick="showSection('materials')">
-                <div class="category-icon">🧱</div>
-                <h3>مواد بناء</h3>
-                <p>مواد بناء عالية الجودة بأفضل الأسعار</p>
-            </div>
-
-            <div class="category-card" onclick="showSection('plumbing')">
-                <div class="category-icon">🚿</div>
-                <h3>قسم صحي</h3>
-                <p>أدوات ومعدات السباكة والأدوات الصحية</p>
-            </div>
-
-            <div class="category-card" onclick="showSection('pumps')">
-                <div class="category-icon">💧</div>
-                <h3>مضخات ماء</h3>
-                <p>مضخات ماء بأنواع وأحجام مختلفة</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="content" id="offers-section">
-        <h2>أقوى العروض والتخفيضات</h2>
-        
-        <div class="product-card-container" id="product-list-container">
-            <div 
-                class="product-card" 
-                data-product-id="prod-001" 
-                data-product-name="حملة الشتاء" 
-                data-product-price="8.00"
-                data-product-image="winter_campaign.jpg"
-            >
-                <img src="winter_campaign.jpg" alt="حملة الشتاء">
-                <h3>🔥 عرض حملة الشتاء المميز 🔥</h3>
-                <p class="description">
-                    يتضمن طفاية حريق 1 كيلو، عاكسة، ومساحات سيارة. تجهيزات أساسية لسلامة سيارتك.
-                </p>
-                <p class="price" style="text-decoration: line-through; color: #999; font-size: 18px; margin-bottom: 0;">السعر السابق: 16.00 دينار</p>
-                <p class="price" style="margin-top: 5px;">السعر الحالي: 8.00 دينار</p>
-                
-                <div class="actions">
-                    <a 
-                        href="#" 
-                        onclick="buyNow(event, 'prod-001', 'حملة الشتاء', '8.00', 'winter_campaign.jpg')" 
-                        class="buy-now-btn"
-                    >
-                        شراء الآن
-                    </a>
-                    <a 
-                        href="#" 
-                        onclick="addToCart('prod-001', 'حملة الشتاء', '8.00', 'winter_campaign.jpg')" 
-                        class="add-to-cart-btn"
-                    >
-                        إضافة إلى السلة
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content" id="hand-tools-section">
-        <h2>عدد يدوية</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="industrial-section">
-        <h2>عدد صناعية</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="construction-section">
-        <h2>عدد بناء</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="materials-section">
-        <h2>مواد بناء</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="plumbing-section">
-        <h2>قسم صحي</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="pumps-section">
-        <h2>مضخات ماء</h2>
-        <div class="product-placeholder">
-            <p>📦 هذا القسم جاهز لإضافة المنتجات</p>
-            <p class="note">يمكنك نسخ كود بطاقة المنتج ولصقه هنا (<code>product-card</code>)</p>
-        </div>
-    </div>
-
-    <div class="content" id="contact-section">
-        <h2>اتصل بنا</h2>
-        <div class="contact-info">
-            <p><strong>📍 العنوان:</strong></p>
-            <p>
-                <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" style="text-decoration: none;">
-                    الرصيفة - إشارة المشيرفة - نزول إسكان الأمير هاشم - مقابل مجمع العامر الطبي مباشرة
-                </a>
-            </p>
-            
-            <p style="margin-top: 30px;"><strong>📞 رقم الهاتف:</strong></p>
-            <p><a href="tel:0785958999">0785958999</a></p>
-            
-            <p style="margin-top: 30px;"><strong>🌐 تابعنا على فيسبوك:</strong></p>
-            <p><a href="https://www.facebook.com/share/1E3bDsVdWE/" target="_blank">صفحتنا على الفيسبوك</a></p>
-            
-            <p style="margin-top: 30px;"><strong>⏰ ساعات العمل:</strong></p>
-            <p>يومياً من الساعة 8 صباحاً - 8 مساءً</p>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>عالم المعدات الشاملة</h3>
-                <p>وجهتك الأولى للمعدات والأدوات بجودة عالية وأسعار منافسة</p>
-                <p>نخدمكم بالجملة والمفرق</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>اتصل بنا</h3>
-                <a href="tel:0785958999">📞 0785958999</a>
-                <p>📍 الرصيفة - إشارة المشيرفة</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>تابعنا</h3>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1E3bDsVdWE/" target="_blank" title="فيسبوك">f</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2024 عالم المعدات الشاملة - جميع الحقوق محفوظة</p>
-        </div>
-    </footer>
-
-    <script>
-        // رقم الهاتف الخاص بك (الأردن)
-        const YOUR_PHONE_NUMBER = '962785958999'; 
-        // 🚨 هنا يجب وضع رابط موقعك الفعلي على GitHub Pages ليظهر رابط الصورة قابلاً للنقر.
-        // مثال: const IMAGE_BASE_URL = 'https://yourusername.github.io/yourrepo/';
-        const IMAGE_BASE_URL = ''; // تم تركه فارغاً مؤقتاً
-        
-        // تخزين السلة في المتصفح (localStorage)
-        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || {}; 
-        const cartCountElement = document.getElementById('cart-count');
-        const cartListElement = document.getElementById('cart-list');
-        const cartTotalElement = document.getElementById('cart-total');
-        const cartModal = document.getElementById('cart-modal');
-        const emptyMessage = document.getElementById('empty-cart-message');
-
-
-        // تحديث عدد المنتجات في الأيقونة العائمة
-        function updateCartCount() {
-            let totalItems = 0;
-            for (let id in cart) {
-                totalItems += cart[id].quantity;
-            }
-            cartCountElement.textContent = totalItems;
-            if (totalItems > 0) {
-                cartCountElement.style.display = 'block';
-            } else {
-                cartCountElement.style.display = 'none';
-            }
-        }
-
-        // بناء محتويات نافذة السلة
-        function renderCart() {
-            cartListElement.innerHTML = '';
-            let total = 0;
-            let isEmpty = true;
-
-            for (let id in cart) {
-                isEmpty = false;
-                const item = cart[id];
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <span>${item.name} (${item.price.toFixed(2)} د.أ)</span>
-                    <div>
-                        <button onclick="changeQuantity('${id}', -1)" style="padding: 5px; cursor: pointer; background:#ddd; border:none; border-radius:3px;">-</button>
-                        <span style="margin: 0 8px;">${item.quantity}</span>
-                        <button onclick="changeQuantity('${id}', 1)" style="padding: 5px; cursor: pointer; background:#ddd; border:none; border-radius:3px;">+</button>
-                    </div>
-                `;
-                cartListElement.appendChild(li);
-            }
-
-            cartTotalElement.textContent = total.toFixed(2);
-            localStorage.setItem('shoppingCart', JSON.stringify(cart));
-            
-            if (isEmpty) {
-                cartListElement.innerHTML = '';
-                emptyMessage.style.display = 'block';
-            } else {
-                emptyMessage.style.display = 'none';
-            }
-        }
-        
-        // تعديل الكمية
-        function changeQuantity(id, change) {
-            cart[id].quantity += change;
-            if (cart[id].quantity <= 0) {
-                delete cart[id];
-            }
-            renderCart();
-            updateCartCount();
-        }
-
-        // إضافة المنتج للسلة
-        function addToCart(id, name, priceString, image) {
-            const price = parseFloat(priceString);
-            if (cart[id]) {
-                cart[id].quantity += 1;
-            } else {
-                // تم تعديل هذا الجزء لتخزين اسم الصورة
-                cart[id] = { id: id, name: name, price: price, quantity: 1, image: image };
-            }
-            updateCartCount();
-            alert(`✅ تم إضافة ${name} إلى السلة!`); // إشعار بسيط
-        }
-        
-        // وظيفة الشراء المباشر (تخطي السلة)
-        function buyNow(event, id, name, priceString, image) {
-            event.preventDefault();
-            
-            // دمج اسم الصورة مع رابط الموقع الأساسي (IMAGE_BASE_URL)
-            const imageUrl = IMAGE_BASE_URL + image;
-            
-            const message = encodeURIComponent(`مرحباً، أرغب بشراء المنتج التالي مباشرة:
-            
-*المنتج:* ${name}
-*السعر:* ${priceString} دينار
-*صورة المنتج:* ${imageUrl}
-
-شكراً.`);
-            window.open(`https://wa.me/${YOUR_PHONE_NUMBER}?text=${message}`, '_blank');
-        }
-
-        // إتمام الطلب عبر واتساب (سلة كاملة)
-        function checkoutViaWhatsApp(event) {
-            event.preventDefault();
-            if (Object.keys(cart).length === 0) {
-                alert("السلة فارغة، لا يوجد طلب لإرساله.");
-                return;
-            }
-
-            let message = "مرحباً، أرغب بإتمام الطلب التالي من موقعكم: \n\n";
-            let total = 0;
-
-            for (let id in cart) {
-                const item = cart[id];
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                // دمج رابط الصورة في الرسالة
-                const imageUrl = IMAGE_BASE_URL + item.image;
-                
-                message += `* ${item.name} (العدد: ${item.quantity} | السعر: ${itemTotal.toFixed(2)} د.أ)\n`;
-                message += `  رابط الصورة: ${imageUrl}\n`; // إضافة رابط الصورة
-            }
-
-            message += `\n*الإجمالي الكلي:* ${total.toFixed(2)} دينار.\n\n`;
-            message += "الرجاء تأكيد الطلب والتفاصيل اللازمة للشحن.";
-            
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/${YOUR_PHONE_NUMBER}?text=${encodedMessage}`, '_blank');
-            
-            // مسح السلة بعد إرسال الطلب
-            cart = {};
-            localStorage.removeItem('shoppingCart');
-            updateCartCount();
-            closeCartModal();
-        }
-        
-        // فتح وإغلاق النافذة
-        function openCartModal() {
-            renderCart();
-            cartModal.style.display = "block";
-        }
-        
-        function closeCartModal() {
-            cartModal.style.display = "none";
-        }
-
-        // إغلاق النافذة عند النقر خارجها
-        window.onclick = function(event) {
-            if (event.target == cartModal) {
-                closeCartModal();
-            }
-        }
-        
-        // وظيفة التنقل الأصلية
-        function showSection(section) {
-            // Remove active class from all nav links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Hide all content sections
-            const sections = document.querySelectorAll('.content');
-            sections.forEach(s => s.classList.remove('active'));
-            
-            const hero = document.getElementById('home-section');
-            const categories = document.getElementById('categories');
-            
-            if (section === 'home') {
-                hero.style.display = 'block';
-                categories.style.display = 'block';
-                document.querySelectorAll('.nav-link')[0].classList.add('active');
-            } else {
-                hero.style.display = 'none';
-                categories.style.display = 'none';
-                
-                // Show selected section
-                const targetSection = document.getElementById(section + '-section');
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-
-                // Highlight active nav link
-                const navLinks = document.querySelectorAll('.nav-link');
-                const sectionMap = {
-                    'offers': 1,
-                    'hand-tools': 2,
-                    'industrial': 3,
-                    'construction': 4,
-                    'materials': 5,
-                    'plumbing': 6,
-                    'pumps': 7,
-                    'contact': 8
-                };
-                if (sectionMap[section] !== undefined) {
-                    navLinks[sectionMap[section]].classList.add('active');
-                }
-            }
-        }
-
-        // Show home by default and load cart count
-        window.addEventListener('load', () => {
-            showSection('home');
-            updateCartCount(); // تحديث السلة عند تحميل الصفحة
-        });
-    </script>
-</body>
-</html>
+            transition: all 0.
