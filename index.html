@@ -254,78 +254,6 @@
             font-weight: bold;
         }
 
-        /* Product Card Styling for Responsiveness */
-        .product-card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-            padding: 20px;
-            background: #f9f9f9; 
-            border-radius: 10px;
-        }
-
-        .product-card {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(196, 30, 58, 0.2);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain; 
-            border-bottom: 1px solid #eee;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        .product-card h3 {
-            color: #333;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .product-card .description {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
-            height: 40px; 
-            overflow: hidden;
-        }
-
-        .product-card .price {
-            font-size: 22px;
-            color: #c41e3a;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .add-to-cart-button {
-            display: block;
-            background: #c41e3a;
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .add-to-cart-button:hover {
-            background: #8b1528;
-        }
-        
         .product-placeholder {
             background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
             border: 2px dashed #ddd;
@@ -370,43 +298,6 @@
 
         .contact-info a:hover {
             text-decoration: underline;
-        }
-        
-        /* New Styles for Address and Button */
-        .address-line-with-map {
-            display: flex;
-            justify-content: flex-start; /* Start from the right (RTL) */
-            align-items: center;
-            gap: 15px; /* Space between text and button */
-            flex-wrap: wrap; /* Allow wrapping on small screens */
-            margin: 20px 0;
-        }
-
-        .address-line-with-map .address-text {
-            margin: 0; 
-            line-height: 1.8;
-            font-size: 18px;
-            flex-shrink: 1; 
-            min-width: 250px; 
-        }
-
-        .location-button-inline {
-            display: inline-flex; 
-            background: #4285F4; /* Google blue color */
-            color: white;
-            padding: 10px 20px; /* Smaller padding for inline element */
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px; 
-            transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex-shrink: 0; /* Prevent button from shrinking */
-        }
-
-        .location-button-inline:hover {
-            background: #3367D6;
-            transform: translateY(-1px);
         }
 
         /* Footer */
@@ -475,7 +366,7 @@
             color: #999;
         }
 
-        /* Responsive - تحسينات الهاتف */
+        /* Responsive */
         @media (max-width: 768px) {
             .header-content {
                 text-align: center;
@@ -485,19 +376,6 @@
             .contact-header {
                 text-align: center;
             }
-            /* تصغير حجم الهاتف والرقم */
-            .logo-section img {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .company-name h1 {
-                font-size: 20px;
-            }
-            
-            .contact-header a {
-                font-size: 18px; /* تصغير حجم رقم الهاتف */
-            }
 
             .hero h2 {
                 font-size: 32px;
@@ -506,35 +384,27 @@
             .hero p {
                 font-size: 16px;
             }
-            
-            /* تحسين شريط التنقل على الهاتف */
+
             nav ul {
                 flex-direction: column;
             }
 
             nav a {
-                padding: 10px 15px; 
-                font-size: 14px; 
+                padding: 15px;
                 border-bottom: 1px solid #eee;
-            }
-
-            .categories {
-                 margin-top: 30px; 
             }
 
             .category-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .content {
-                margin: 30px auto; 
+
+            .logo-section img {
+                width: 80px;
+                height: 80px;
             }
-            
-            /* على الهاتف، اجعل زر الموقع يأتي تحت سطر العنوان بدلاً من جانبه */
-            .address-line-with-map {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+
+            .company-name h1 {
+                font-size: 22px;
             }
         }
     </style>
@@ -625,7 +495,6 @@
             <p class="note">هذا المكان مخصص لعرض المنتجات المخفضة لجذب الزبائن.</p>
         </div>
     </div>
-    
     <div class="content" id="hand-tools-section">
         <h2>عدد يدوية</h2>
         <div class="product-placeholder">
@@ -677,14 +546,13 @@
     <div class="content" id="contact-section">
         <h2>اتصل بنا</h2>
         <div class="contact-info">
-            <p style="margin-bottom: 0;"><strong>📍 العنوان:</strong></p>
-            
-            <div class="address-line-with-map">
-                <p class="address-text">الرصيفة - إشارة المشيرفة - نزول إسكان الأمير هاشم - مقابل مجمع العامر الطبي مباشرة</p>
-                <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" class="location-button-inline">
-                    🗺️ الذهاب إلى الموقع
+            <p><strong>📍 العنوان:</strong></p>
+            <p>
+                <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" style="text-decoration: none;">
+                    الرصيفة - إشارة المشيرفة - نزول إسكان الأمير هاشم - مقابل مجمع العامر الطبي مباشرة
                 </a>
-            </div>
+            </p>
+            
             <p style="margin-top: 30px;"><strong>📞 رقم الهاتف:</strong></p>
             <p><a href="tel:0785958999">0785958999</a></p>
             
@@ -749,11 +617,7 @@
                 const targetSection = document.getElementById(section + '-section');
                 if (targetSection) {
                     targetSection.classList.add('active');
-                    
-                     window.scrollTo({
-                         top: 0,
-                         behavior: 'smooth'
-                     });
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
 
                 // Highlight active nav link
