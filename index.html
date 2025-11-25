@@ -372,23 +372,28 @@
             text-decoration: underline;
         }
         
-        /* Map Container Styling */
-        .map-container {
-            overflow:hidden; 
-            padding-top:56.25%; 
-            position:relative; 
-            margin-top: 30px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        /* Map Button Styling */
+        .map-button-wrapper { 
+            text-align: center; 
+            margin: 40px 0;
         }
         
-        .map-container iframe {
-            position:absolute; 
-            top:0; 
-            left:0; 
-            width:100%; 
-            height:100%; 
-            border:0;
+        .location-button {
+            display: inline-block;
+            background: #4285F4; /* Google blue color */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-button:hover {
+            background: #3367D6;
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -665,13 +670,10 @@
             <p>يومياً من الساعة 8 صباحاً - 8 مساءً</p>
         </div>
         
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13502.946114173874!2d35.99229715!3d32.0001007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5c49b062534f%3A0xc4f44f6f1f456574!2sAl%20Amer%20Pharmacy!5e0!3m2!1sen!2sjo!4v1700685600000!5m2!1sen!2sjo" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div class="map-button-wrapper">
+            <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" class="location-button">
+                🗺️ الذهاب إلى الموقع (Google Maps)
+            </a>
         </div>
         </div>
 
