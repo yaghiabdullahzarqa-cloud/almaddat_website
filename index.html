@@ -254,7 +254,7 @@
             font-weight: bold;
         }
 
-        /* Product Card Styling for Responsiveness - تم إضافته هنا */
+        /* Product Card Styling for Responsiveness */
         .product-card-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -371,6 +371,25 @@
         .contact-info a:hover {
             text-decoration: underline;
         }
+        
+        /* Map Container Styling */
+        .map-container {
+            overflow:hidden; 
+            padding-top:56.25%; 
+            position:relative; 
+            margin-top: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            position:absolute; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            height:100%; 
+            border:0;
+        }
 
         /* Footer */
         footer {
@@ -438,7 +457,7 @@
             color: #999;
         }
 
-        /* Responsive - تم تحسين هذا الجزء لحل مشكلة التغطية على الموبايل */
+        /* Responsive - تحسينات الهاتف */
         @media (max-width: 768px) {
             .header-content {
                 text-align: center;
@@ -476,13 +495,13 @@
             }
 
             nav a {
-                padding: 10px 15px; /* تقليل الـ Padding هنا لحل مشكلة التغطية */
-                font-size: 14px; /* تصغير حجم الخط */
+                padding: 10px 15px; 
+                font-size: 14px; 
                 border-bottom: 1px solid #eee;
             }
 
             .categories {
-                 margin-top: 30px; /* تقليل المسافة العلوية */
+                 margin-top: 30px; 
             }
 
             .category-grid {
@@ -490,7 +509,7 @@
             }
             
             .content {
-                margin: 30px auto; /* تقليل الهوامش الرأسية للمحتوى */
+                margin: 30px auto; 
             }
         }
     </style>
@@ -645,7 +664,16 @@
             <p style="margin-top: 30px;"><strong>⏰ ساعات العمل:</strong></p>
             <p>يومياً من الساعة 8 صباحاً - 8 مساءً</p>
         </div>
-    </div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13502.946114173874!2d35.99229715!3d32.0001007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b5c49b062534f%3A0xc4f44f6f1f456574!2sAl%20Amer%20Pharmacy!5e0!3m2!1sen!2sjo!4v1700685600000!5m2!1sen!2sjo" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        </div>
 
     <footer>
         <div class="footer-content">
@@ -700,10 +728,7 @@
                 const targetSection = document.getElementById(section + '-section');
                 if (targetSection) {
                     targetSection.classList.add('active');
-                    // يفضل إزالة التمرير التلقائي (scrollIntoView) في حال وجود شريط تنقل ثابت (sticky nav) لتجنب القفز
-                    // targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
                     
-                    // بدلاً من ذلك، ننتقل للأعلى قليلاً
                      window.scrollTo({
                          top: 0,
                          behavior: 'smooth'
