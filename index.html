@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عالم المعدات الشاملة</title>
     <style>
-        * {
+        /* 🚨🚨 منع التحديد والنسخ من الموقع 🚨🚨 */
+        body, * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;  /* Safari */
+            -moz-user-select: none;     /* Firefox */
+            -ms-user-select: none;      /* IE10+ */
+            user-select: none;          /* Standard */
         }
+        /* ------------------------------------------- */
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -130,7 +136,12 @@
 
         /* Hero Section */
         .hero {
-            background: url('hero-cover.jpg') center/cover; 
+            /* 🚨🚨 تحسين ظهور الصورة الخلفية 🚨🚨 */
+            background: url('hero-cover.jpg') no-repeat center center; 
+            background-size: contain; /* تغيير من cover إلى contain أو 100% 100% */
+            background-size: cover; /* تم إرجاعها إلى cover لتحسين التغطية مع تغيير الـ Position */
+            background-position: center 20%; /* تعديل موضع الصورة لإظهار تفاصيل أكثر */
+            /* ------------------------------------------- */
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -360,7 +371,7 @@
         .cart-icon {
             position: fixed;
             top: 25px; 
-            left: 20px; /* المكان الافتراضي (لشاشات الكمبيوتر) */
+            left: 20px; 
             background-color: #4CAF50; 
             color: white;
             padding: 15px;
@@ -609,15 +620,14 @@
                 display: none; 
             }
 
-            /* 🚨🚨 التعديل الرئيسي: نقل أيقونة السلة إلى اليمين 🚨🚨 */
+            /* نقل أيقونة السلة إلى اليمين */
             .cart-icon {
-                left: auto; /* إلغاء خاصية اليسار */
-                right: 20px; /* وضعها على اليمين */
-                top: 25px; /* تثبيت الموضع العلوي */
+                left: auto; 
+                right: 20px; 
+                top: 25px; 
                 padding: 10px; 
                 font-size: 20px;
             }
-            /* ---------------------------------------------------- */
             
             .hero h2 {
                 font-size: 32px;
