@@ -372,28 +372,41 @@
             text-decoration: underline;
         }
         
-        /* Map Button Styling */
-        .map-button-wrapper { 
-            text-align: center; 
-            margin: 40px 0;
+        /* New Styles for Address and Button */
+        .address-line-with-map {
+            display: flex;
+            justify-content: flex-start; /* Start from the right (RTL) */
+            align-items: center;
+            gap: 15px; /* Space between text and button */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            margin: 20px 0;
         }
-        
-        .location-button {
-            display: inline-block;
+
+        .address-line-with-map .address-text {
+            margin: 0; 
+            line-height: 1.8;
+            font-size: 18px;
+            flex-shrink: 1; 
+            min-width: 250px; 
+        }
+
+        .location-button-inline {
+            display: inline-flex; 
             background: #4285F4; /* Google blue color */
             color: white;
-            padding: 15px 30px;
+            padding: 10px 20px; /* Smaller padding for inline element */
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px; 
             transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0; /* Prevent button from shrinking */
         }
 
-        .location-button:hover {
+        .location-button-inline:hover {
             background: #3367D6;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         /* Footer */
@@ -515,6 +528,13 @@
             
             .content {
                 margin: 30px auto; 
+            }
+            
+            /* على الهاتف، اجعل زر الموقع يأتي تحت سطر العنوان بدلاً من جانبه */
+            .address-line-with-map {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
             }
         }
     </style>
@@ -654,12 +674,17 @@
         </div>
     </div>
 
-  <div class="content" id="contact-section">
+    <div class="content" id="contact-section">
         <h2>اتصل بنا</h2>
         <div class="contact-info">
-            <p><strong>📍 العنوان:</strong></p>
-            <p>الرصيفة - إشارة المشيرفة - نزول إسكان الأمير هاشم - مقابل مجمع العامر الطبي مباشرة</p>
+            <p style="margin-bottom: 0;"><strong>📍 العنوان:</strong></p>
             
+            <div class="address-line-with-map">
+                <p class="address-text">الرصيفة - إشارة المشيرفة - نزول إسكان الأمير هاشم - مقابل مجمع العامر الطبي مباشرة</p>
+                <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" class="location-button-inline">
+                    🗺️ الذهاب إلى الموقع
+                </a>
+            </div>
             <p style="margin-top: 30px;"><strong>📞 رقم الهاتف:</strong></p>
             <p><a href="tel:0785958999">0785958999</a></p>
             
@@ -669,45 +694,7 @@
             <p style="margin-top: 30px;"><strong>⏰ ساعات العمل:</strong></p>
             <p>يومياً من الساعة 8 صباحاً - 8 مساءً</p>
         </div>
-        
-        <div class="map-button-wrapper">
-            <a href="https://maps.app.goo.gl/XhZCUBM9iYjFmEpVA" target="_blank" class="location-button">
-                🗺️ الذهاب إلى الموقع (Google Maps)
-            </a>
-        </div>
     </div>
-    ```
-
-### 🚨 نقطة هامة بخصوص التصميم
-
-لتظهر الأزرار الجديدة بشكل صحيح، يجب أن تتأكد أن كود **CSS الخاص بالزر** موجود في مكان ما ضمن وسم `<style>` في رأس ملفك (`<head>`).
-
-**يرجى البحث عن أي مكان داخل وسم `<style>` وتأكد أن الكود التالي موجود هناك:**
-
-```css
-        /* Map Button Styling */
-        .map-button-wrapper { 
-            text-align: center; 
-            margin: 40px 0;
-        }
-        
-        .location-button {
-            display: inline-block;
-            background: #4285F4; /* Google blue color */
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .location-button:hover {
-            background: #3367D6;
-            transform: translateY(-2px);
-        }
 
     <footer>
         <div class="footer-content">
@@ -794,4 +781,3 @@
     </script>
 </body>
 </html>
-
