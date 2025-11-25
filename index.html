@@ -254,7 +254,7 @@
             font-weight: bold;
         }
 
-        /* === كود تنسيق المنتجات المُضاف حديثاً === */
+        /* === كود تنسيق المنتجات === */
         .product-card-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -343,8 +343,6 @@
 
         .buy-now-btn:hover { background: #128C7E; }
         .add-to-cart-btn:hover { background: #8b1528; }
-        
-        /* === نهاية كود تنسيق المنتجات === */
         
         /* === كود السلة العائمة (Cart) === */
         
@@ -712,7 +710,13 @@
         <h2>أقوى العروض والتخفيضات</h2>
         
         <div class="product-card-container" id="product-list-container">
-            <div class="product-card" data-product-id="prod-001" data-product-name="حملة الشتاء" data-product-price="8.00">
+            <div 
+                class="product-card" 
+                data-product-id="prod-001" 
+                data-product-name="حملة الشتاء" 
+                data-product-price="8.00"
+                data-product-image="winter_campaign.jpg"
+            >
                 <img src="winter_campaign.jpg" alt="حملة الشتاء">
                 <h3>🔥 عرض حملة الشتاء المميز 🔥</h3>
                 <p class="description">
@@ -722,10 +726,18 @@
                 <p class="price" style="margin-top: 5px;">السعر الحالي: 8.00 دينار</p>
                 
                 <div class="actions">
-                    <a href="#" onclick="buyNow(event, 'prod-001', 'حملة الشتاء', '8.00')" class="buy-now-btn">
+                    <a 
+                        href="#" 
+                        onclick="buyNow(event, 'prod-001', 'حملة الشتاء', '8.00', 'winter_campaign.jpg')" 
+                        class="buy-now-btn"
+                    >
                         شراء الآن
                     </a>
-                    <a href="#" onclick="addToCart('prod-001', 'حملة الشتاء', '8.00')" class="add-to-cart-btn">
+                    <a 
+                        href="#" 
+                        onclick="addToCart('prod-001', 'حملة الشتاء', '8.00', 'winter_campaign.jpg')" 
+                        class="add-to-cart-btn"
+                    >
                         إضافة إلى السلة
                     </a>
                 </div>
@@ -831,6 +843,9 @@
     <script>
         // رقم الهاتف الخاص بك (الأردن)
         const YOUR_PHONE_NUMBER = '962785958999'; 
+        // 🚨 هنا يجب وضع رابط موقعك الفعلي على GitHub Pages ليظهر رابط الصورة قابلاً للنقر.
+        // مثال: const IMAGE_BASE_URL = 'https://yourusername.github.io/yourrepo/';
+        const IMAGE_BASE_URL = ''; // تم تركه فارغاً مؤقتاً
         
         // تخزين السلة في المتصفح (localStorage)
         let cart = JSON.parse(localStorage.getItem('shoppingCart')) || {}; 
@@ -901,24 +916,30 @@
         }
 
         // إضافة المنتج للسلة
-        function addToCart(id, name, priceString) {
+        function addToCart(id, name, priceString, image) {
             const price = parseFloat(priceString);
             if (cart[id]) {
                 cart[id].quantity += 1;
             } else {
-                cart[id] = { id: id, name: name, price: price, quantity: 1 };
+                // تم تعديل هذا الجزء لتخزين اسم الصورة
+                cart[id] = { id: id, name: name, price: price, quantity: 1, image: image };
             }
             updateCartCount();
             alert(`✅ تم إضافة ${name} إلى السلة!`); // إشعار بسيط
         }
         
         // وظيفة الشراء المباشر (تخطي السلة)
-        function buyNow(event, id, name, priceString) {
+        function buyNow(event, id, name, priceString, image) {
             event.preventDefault();
+            
+            // دمج اسم الصورة مع رابط الموقع الأساسي (IMAGE_BASE_URL)
+            const imageUrl = IMAGE_BASE_URL + image;
+            
             const message = encodeURIComponent(`مرحباً، أرغب بشراء المنتج التالي مباشرة:
             
 *المنتج:* ${name}
 *السعر:* ${priceString} دينار
+*صورة المنتج:* ${imageUrl}
 
 شكراً.`);
             window.open(`https://wa.me/${YOUR_PHONE_NUMBER}?text=${message}`, '_blank');
@@ -939,7 +960,12 @@
                 const item = cart[id];
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
+                
+                // دمج رابط الصورة في الرسالة
+                const imageUrl = IMAGE_BASE_URL + item.image;
+                
                 message += `* ${item.name} (العدد: ${item.quantity} | السعر: ${itemTotal.toFixed(2)} د.أ)\n`;
+                message += `  رابط الصورة: ${imageUrl}\n`; // إضافة رابط الصورة
             }
 
             message += `\n*الإجمالي الكلي:* ${total.toFixed(2)} دينار.\n\n`;
@@ -972,7 +998,7 @@
             }
         }
         
-        // وظيفة التنقل الأصلية (مع تحديث بسيط لضمان الإخفاء الصحيح)
+        // وظيفة التنقل الأصلية
         function showSection(section) {
             // Remove active class from all nav links
             document.querySelectorAll('.nav-link').forEach(link => {
